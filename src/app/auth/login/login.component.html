@@ -1,0 +1,51 @@
+
+    <ion-grid [fixed]="true">
+    <ion-card  [style]="{width:'50%',margin:'auto',top:'20%'}">
+      <ion-card-header>
+        <ion-card-title>Login</ion-card-title>
+      </ion-card-header>
+      <ion-card-content padding>
+        <form [formGroup]="loginForm">
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input   type="email" formControlName="Email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input   type="password" formControlName="Password"></ion-input>
+            <!-- <a *ngIf="!showPassword" (click)="togglePasswordVisibility(true)"><i class="far fa-eye"
+							id="togglePassword"></i>
+							
+					</a>
+					<a *ngIf="showPassword" (click)="togglePasswordVisibility(false)"><i class="far fa-eye-slash"
+						id="togglePassword"></i></a> -->
+          </ion-item>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6" class="ion-text-start">
+                <div class="remember">
+                  <ion-checkbox labelPlacement="end"></ion-checkbox>
+                  Remember me
+                </div>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                <div class="forgot">
+                  <a href="auth/forget"><b>Forgot Password</b></a>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-button type="submit" expand="full" (click)="Login()">Submit</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+ </ion-grid>
+ 
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header> -->

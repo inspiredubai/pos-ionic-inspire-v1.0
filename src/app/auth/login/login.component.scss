@@ -1,0 +1,66 @@
+::ng-deep {
+
+  ion-card-header {
+    --background: #2c5d82;
+    --color: white;
+    text-align: center;
+    border: 1px solid #1c3142;
+    --border-width: 4px 0;
+    --min-height: 65px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+  }
+
+
+
+
+  ion-card-title {
+    font-size: 26px;
+    text-align: ceter;
+    color: white;
+  }
+
+  ion-card-subtitle {
+    padding-top: 100px;
+
+  }
+
+  .today {
+    font-size: 18px;
+  }
+
+  .Forgot {
+    text-align: right;
+  }
+
+  .remember {
+    text-align: start;
+  }
+
+  .ion-margin-bottom {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+}
+
+// #togglePassword {
+//     margin-left: -30px;
+//     cursor: pointer;
+//     color: black;
+//   }
+//  .page-container {
+//         background-repeat: no-repeat;
+//        background-position: center;
+//        height: 100vh; /* Adjust to your preference */
+//        background-image: url('..img/back.jpg');
+//        /* Adjust the path to your image */
+//        background-size: cover;
+//         background-attachment: fixed;
+//      }
+@media screen and (max-width: 768px) {
+  ion-card {
+    width: 100% !important;
+    margin: 0;
+  }
+}

@@ -1,0 +1,120 @@
+<ion-content class="ion-padding">
+
+  <ion-row class="subset">
+    <div class="today"><b> Today: {{todayTotal}} </b></div>
+  </ion-row>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="6" size-md="6">
+        <ion-title class="prehead">
+          <b>Group Summary</b>
+        </ion-title>
+        <div class="chart-container">
+          <canvas id="oilchart"></canvas>
+        </div>
+      </ion-col>
+      <ion-col size="12" size-sm="6" size-md="6">
+        <ion-title class="prehead">
+          <b>Sales</b>
+        </ion-title>
+        <div class="container">
+          <canvas id="lineChart"></canvas>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- Add more rows and columns as needed -->
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="6" size-md="6">
+        <ion-title class="prehead">
+          <b>POS Form</b>
+        </ion-title>
+        <ion-grid>
+          <ion-header class="POS">
+            <ion-row>
+              <ion-col>Cash Amt </ion-col>
+              <ion-col>Credit Amt </ion-col>
+              <ion-col>Sale Amt </ion-col>
+              <ion-col> Date </ion-col>
+            </ion-row>
+          </ion-header>
+          <ion-row *ngFor="let item of detail">
+            <ion-col>{{ item.CashAmount }}</ion-col>
+            <ion-col>{{ item.CreditCardAmount }}</ion-col>
+            <ion-col>{{ item.SalesAmount }}</ion-col>
+            <ion-col>{{ item.SummaryDateString }}</ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col size="12" size-sm="6" size-md="6">
+        <ion-title class="prehead">
+          <b>Transaction</b>
+        </ion-title>
+        <ion-grid>
+          <ion-header class="POS">
+            <ion-row >
+              <ion-col>Inv</ion-col>
+              <ion-col> Time</ion-col>
+              <ion-col> Amount</ion-col>
+              <ion-col>Cash</ion-col>
+              <ion-col>Card</ion-col>
+
+            </ion-row>
+          </ion-header>
+          <ion-row *ngFor="let item of detail">
+            <ion-col>{{ item.CashAmount }}</ion-col>
+            <ion-col>{{ item.CreditCardAmount }}</ion-col>
+            <ion-col>{{ item.SalesAmount }}</ion-col>
+            <ion-col>{{ item.SummaryDateString }}</ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+    <!-- Add more rows and columns as needed -->
+  </ion-grid>
+
+  <ion-grid size="12">
+    <ion-title class="summary">
+      <b>Group Summary</b>
+    </ion-title>
+
+    <!-- <div  class="col-12 lg-12 md-12 sm-12"> -->
+    <ion-row  size="12" size-sm="12"
+      size-md="12">
+      <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12" size-md="3">
+        <div class="group">Item Group:{{item.GroupName}}</div>
+        <div class="group">Item Name:</div>
+        <div class="group">Amount: {{item.Amount}}</div>
+        <div class="abc">QTY %:4</div>
+        <br>
+        <div class="abc">Amount %: {{item.Percentage}}</div>
+      </ion-col>
+    </ion-row>
+    <!-- </div> -->
+  </ion-grid>
+
+  <ion-grid size="10">
+    <ion-title class="summary">
+      <b>Today Status</b>
+    </ion-title>
+    <ion-row class="col-12 lg-12 md-12 sm-12">
+
+      <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12"
+        size-md="4">
+        <div class="group">Total No Customer: {{item.Id}}</div>
+        <div class="group">Last Punched: {{item.LastBillTime}}</div>
+        <div class="group">Total Bills: {{10}}</div>
+        <div class="abc">Total Bill Amount %: {{item.LastBillAmount}}</div>
+        <br>
+        <div class="abc">Amount %: 9</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div style="width: 800px;"><canvas id="acquisitions"></canvas></div> -->
+
+</ion-content>
