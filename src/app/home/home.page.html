@@ -1,149 +1,156 @@
 <div class="ion-hide-sm-up"></div>
 <app-navbar></app-navbar>
-
 <!-- <div class="page"> -->
-  <ion-content>
-    <ion-row class="bgblue marginL">
-      <div class="today"><b> Today: {{todayTotal}} </b></div>
+<ion-content>
+  <ion-row  size="12" size-sm="12" size-md="12" class="bgblue marginL">
+    <div class="today"><b> Today: {{todayTotal}} </b></div>
+  </ion-row>
+  <br>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="6">
+        <ion-title class="bgblue1 mLR">
+          <b>Group Summary</b>
+        </ion-title>
+        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </ion-col>
+      <ion-col size="12" size-sm="12" size-md="6">
+        <ion-title class="bgblue1 mLR">
+          <b>Sales</b>
+        </ion-title>
+        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
+          <canvas id="lineChart"></canvas>
+        </div>
+      </ion-col>
+
     </ion-row>
-    <br>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12" size-sm="6" size-md="6">
-          <ion-title class="bgblue1 mLR">
-            <b>Group Summary</b>
-          </ion-title>
-          <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
-            <canvas id="pieChart"></canvas>
-          </div>
-        </ion-col>
-        <ion-col size="12" size-sm="6" size-md="6">
-          <ion-title class="bgblue1 mLR">
-            <b>Sales</b>
-          </ion-title>
-          <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
-            <canvas id="lineChart"></canvas>
-          </div>
-        </ion-col>
-        
-      </ion-row>
-    </ion-grid>
+  </ion-grid>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12" size-sm="6" size-md="6">
-          <ion-title class="bgblue1 mLR">
-            <b>POS Form</b>
-          </ion-title>
-          <ion-grid>
-            <ion-header class="bgblue">
-              <ion-row>
-                <ion-col>Cash Amt </ion-col>
-                <ion-col>Credit Amt </ion-col>
-                <ion-col>Sale Amt </ion-col>
-                <ion-col> Date </ion-col>
-              </ion-row>
-            </ion-header>
-            <ion-row *ngFor="let item of detail">
-              <ion-col>{{ item.CashAmount }}</ion-col>
-              <ion-col>{{ item.CreditCardAmount }}</ion-col>
-              <ion-col>{{ item.SalesAmount }}</ion-col>
-              <ion-col>{{ item.SummaryDateString }}</ion-col>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="6">
+        <ion-title class="bgblue1 mLR">
+          <b>POS Form</b>
+        </ion-title>
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Cash Amt </th>
+                <th>Credit Amt </th>
+                <th>Sale Amt </th>
+                <th> Date </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of detail">
+                <td>{{ item.CashAmount }}</td>
+                <td>{{ item.CreditCardAmount }}</td>
+                <td>{{ item.SalesAmount }}</td>
+                <td>{{ item.SummaryDateString }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-        <ion-col size="12" size-sm="6" size-md="6">
-          <ion-title class="bgblue1 mLR">
-            <b>Transaction</b>
-          </ion-title>
-          <ion-grid>
-            <ion-header class="bgblue">
-              <ion-row>
-               
-                <ion-col>Inv</ion-col>
-                <ion-col> Time</ion-col>
-                <ion-col> Amount</ion-col>
-                <ion-col>Cash</ion-col>
-                <ion-col>Card</ion-col>
+      </ion-col>
+      <ion-col size="12" size-sm="12" size-md="6">
+        <ion-title class="bgblue1 mLR">
+          <b>Transaction</b>
+        </ion-title>
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Inv</th>
+                <th> Time</th>
+                <th> Amount</th>
+                <th>Cash</th>
+                <th>Card</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of traction">
+                <td>{{ item?.Id }}</td>
+                <td>{{ item?.CreatedDateString }}</td>
+                <td>{{ item?.Amount }}</td>
+                <td>{{ item?.Cash }}</td>
+                <td>{{ item?.BillNo }}</td>
 
-              </ion-row>
-            </ion-header>
-            <ion-row *ngFor="let item of traction">
-              <ion-col>{{ item?.Id }}</ion-col>
-              <ion-col>{{ item?.CreatedDateString }}</ion-col>
-              <ion-col>{{ item?.Amount }}</ion-col>
-             
-              <ion-col>{{ item?.Cash }}</ion-col>
-              <ion-col>{{ item?.BillNo }}</ion-col>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="12">
+        <ion-title class="bgblue1 mLR">
+          <b>Transaction Void</b>
+        </ion-title>
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Oredr No</th>
+                <th> Item Name </th>
+                <th>Qty </th>
+                <th> User </th>
+                <th> Time </th>
 
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12" size-sm="12" size-md="12">
-          <ion-title class="bgblue1 mLR">
-            <b>Transaction Void</b>
-          </ion-title>
-          <ion-header class="bgblue">
-            <ion-row>
-              <ion-col>Oredr No</ion-col>
-              <ion-col> Item Name </ion-col>
-              <ion-col>Qty </ion-col>
-              <ion-col> User </ion-col>
-              <ion-col> Time </ion-col>
-  
-            </ion-row>
-          </ion-header>
-          <ion-row>
-            <ion-col> </ion-col>
-            <ion-col> </ion-col>
-            <ion-col> </ion-col>
-            <ion-col> </ion-col>
-  
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-grid size="12">
-      <ion-title class="bgblue1 mLR">
-        <b>Group Summary</b>
-      </ion-title>
-      <ion-row size="12" size-sm="12"
-        size-md="12">
-        <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12"
-          size-md="3">
-          <div class="group">Item Group:{{item.GroupName}}</div>
-          <div class="group">Item Name:</div>
-          <div class="group">Amount: {{item.Amount}}</div>
-          <div class="abc">QTY %:4</div>
-          <br>
-          <div class="abc">Amount %: {{item.Percentage}}</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+   
 
-    <ion-grid size="10">
-      <ion-title class="bgblue1 mLR">
-        <b>Today Status</b>
-      </ion-title>
-      <ion-row class="col-12 lg-12 md-12 sm-12">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid size="12" size-sm="12" size-md="12">
+    <ion-title class="bgblue1 mLR">
+      <b>Group Summary</b>
+    </ion-title>
+    <ion-row size="12" size-sm="12" size-md="12">
+      <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12" size-md="3">
+        <div class="group">Item Group:{{item.GroupName}}</div>
+        <div class="group">Item Name:</div>
+        <div class="group">Amount: {{item.Amount}}</div>
+        <div class="abc">QTY %:4</div>
+        <br>
+        <div class="abc">Amount %: {{item.Percentage}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid size="12"  size-sm="12" size-md="12">
+    <ion-title class="bgblue1 mLR">
+      <b>Today Status</b>
+    </ion-title>
+    <ion-row  size="12"  size-sm="12" size-md="12">
 
-        <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12"
-          size-md="4">
-          <div class="group">Total No Customer: {{item?.Id}}</div>
-          <div class="group">Last Punched: {{item?.LastBillTime}}</div>
-          <div class="group">Total Bills: {{10}}</div>
-          <div class="abc">Total Bill Amount %: {{item?.LastBillAmount}}</div>
-          <br>
-          <div class="abc">Amount %: 9</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content>
+      <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="4">
+        <div class="group">Total No Customer: {{item?.Id}}</div>
+        <div class="group">Last Punched: {{item?.LastBillTime}}</div>
+        <div class="group">Total Bills: {{10}}</div>
+        <div class="abc">Total Bill Amount %: {{item?.LastBillAmount}}</div>
+        <br>
+        <div class="abc">Amount %: 9</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
 <!-- </div> -->
 <!-- <app-navbar></app-navbar>
 <app-dashboard></app-dashboard> -->

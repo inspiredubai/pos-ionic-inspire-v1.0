@@ -6,9 +6,9 @@
     text-align: center;
     border: 1px solid #1c3142;
     --border-width: 4px 0;
-    --min-height: 65px;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+    --min-height: 50px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
   }
 
 
@@ -20,23 +20,11 @@
     color: white;
   }
 
-  ion-card-subtitle {
-    padding-top: 100px;
-
-  }
-
   .today {
     font-size: 18px;
   }
 
-  .Forgot {
-    text-align: right;
-  }
-
-  .remember {
-    text-align: start;
-  }
-
+  
   .ion-margin-bottom {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -63,4 +51,50 @@
     width: 100% !important;
     margin: 0;
   }
+}
+.login-card {
+  width: 60%;
+  margin: auto;
+  margin-top: 20%;
+}
+
+@media screen and (max-width: 768px) {
+  .login-card {
+    width: 90%; /* or 100% if you want full width on mobile */
+    margin-top: 15%;
+  }
+ ion-card-title {
+    font-size: 16px;
+    text-align: ceter;
+    color: white;
+   
+  }
+   .ion-margin-bottom {
+    margin-bottom: 3px;
+    margin-top: 3px;
+  }
+.responsive-label{
+  font-size: 12px;
+}
+.custom-checkbox::part(container) {
+  width: 12px;
+  height: 12px;
+}
+
+.custom-checkbox::part(mark) {
+  font-size: 16px; /* controls checkmark size */
+}
+  .forgot {
+     font-size: 7px;
+     
+   }
+
+  .remember {
+ 
+    font-size: 7px;
+    }
+ ion-button{
+  width: 100%;
+  height: 30px;
+ }
 }
