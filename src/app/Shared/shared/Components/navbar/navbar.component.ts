@@ -12,17 +12,19 @@ import { DashboardService } from '../../Services/dashboard.service';
 })
 export class NavbarComponent implements OnInit {
   selectedOutletId: any;
-
-  constructor(
+Istoggle: boolean = true;   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private toastController: ToastController,
     private dashboardService: DashboardService,
     private route: ActivatedRoute
   ) { }
-  goBack() {
-  this.router.navigate(['/outlet']);  // Replace with your route
+goBack() {
+  // Uncomment the below line if navigation is needed
+  // this.router.navigate(['/outlet']);
+  this.Istoggle = !this.Istoggle;
 }
+
   ngOnInit() {
     this.GetOutlets()
     // this.route.paramMap.subscribe(params => {
