@@ -20,7 +20,9 @@ export class NavbarComponent implements OnInit {
     private dashboardService: DashboardService,
     private route: ActivatedRoute
   ) { }
-  
+  goBack() {
+  this.router.navigate(['/outlet']);  // Replace with your route
+}
   ngOnInit() {
     this.GetOutlets()
     // this.route.paramMap.subscribe(params => {
