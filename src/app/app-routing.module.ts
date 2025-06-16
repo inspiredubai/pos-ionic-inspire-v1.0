@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminAuthGuard } from './Shared/shared/GlobelRequest/admin-auth.guard';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { OutletComponent } from './home/outlet/outlet.component';
+import { HomePage } from './home/home.page';
 // import { LoadingGuard } from './Shared/shared/Services/loading.guard';
 //import { Chart } from 'chart.js';
 const routes: Routes = [
@@ -22,7 +25,7 @@ const routes: Routes = [
     // canActivate: [LoadingGuard],
 
   },
-
+   
 ];
  
 @NgModule({

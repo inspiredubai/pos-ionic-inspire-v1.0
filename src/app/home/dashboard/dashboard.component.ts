@@ -14,6 +14,7 @@ export class DashboardComponent  implements OnInit {
   data: any;
   options: any;
   chart: any;
+  
   detail = [
     { CashAmount: 'any', CreditCardAmount: 'exp', SalesAmount: 2021, SummaryDateString: "12-02-2018" },
     { CashAmount: 'any', CreditCardAmount: 'exp', SalesAmount: 2022, SummaryDateString: "12-02-2018" },

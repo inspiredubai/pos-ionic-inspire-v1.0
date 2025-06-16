@@ -125,4 +125,56 @@
     
 //   }
  
-    
+    @media screen and (max-width: 768px) {
+  ion-card {
+    width: 100% !important;
+    margin: 0;
+  }
+}
+.login-card {
+  width: 60%;
+  margin: auto;
+  margin-top: 20%;
+}
+
+@media screen and (max-width: 768px) {
+   
+ ion-card-title {
+    font-size: 16px;
+    text-align: ceter;
+    color: white;
+   
+  }
+   
+.responsive-label{
+  font-size: 12px;
+}
+ 
+ 
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto; // Enables horizontal scroll
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; // Forces scroll on small screens
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  thead {
+    background-color: #b60f0f;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}

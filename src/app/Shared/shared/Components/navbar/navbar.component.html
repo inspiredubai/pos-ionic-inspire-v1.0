@@ -1,66 +1,50 @@
-
 <div id="main-content">
-  <ion-header>
-    <ion-toolbar
-      style="--background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important; color: whitesmoke; margin-bottom:5px;">
-      <ion-buttons slot="start" class="ion-hide-sm-up">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+  <ion-toolbar
+    style="--background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important; color: whitesmoke; margin-bottom:5px;">
+    <ion-buttons slot="start" class="ion-hide-sm-up">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
 
-      <!-- <ion-buttons class="ion-hide-md-down" slot="secondary"
-        *ngFor="let item of outlets">
-        <ion-button (click)="link(item.Id)">{{item.Name}}</ion-button>
-      </ion-buttons> -->
-      <ion-buttons class="ion-hide-md-down" slot="secondary">
-        <ion-button *ngFor="let item of outlets"
-          (click)="link(item.Id)">
-          {{item.Name}}
-        </ion-button>
-      </ion-buttons>
-      <ion-title>
-
-        <a>
-          <img alt="Ecommerce" src="assets/img/logo.png" class="logo">
-        </a>
-        Ecommerce
-      </ion-title>
-
-      <ion-button class="ion-hide-sm-down" (click)="Logout()" color="danger"
-        slot="end">
-        <ion-icon slot="start" name="power"></ion-icon>
-        <span>Logout</span>
+    <ion-buttons class="ion-hide-md-down" slot="secondary">
+      <ion-button *ngFor="let item of outlets" (click)="link(item.Id)">
+        {{item.Name}}
       </ion-button>
-      <ion-buttons class="ion-hide-sm-up" (click)="Logout()" slot="end">
+    </ion-buttons>
+    <ion-title>
 
-        <ion-button>
-          <ion-icon slot="icon-only" name="power"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+      <a>
+        <img alt="Ecommerce" src="assets/img/logo.png" class="logo">
+      </a>
+      Ecommerce
+    </ion-title>
+
+    <ion-button class="ion-hide-sm-down" (click)="Logout()" color="danger" slot="end">
+      <ion-icon slot="start" name="power"></ion-icon>
+      <span>Logout</span>
+    </ion-button>
+    <ion-buttons class="ion-hide-sm-up" (click)="Logout()" slot="end"  class="iconsize">
+
+      <ion-button class="iconsize">
+        <ion-icon slot="icon-only" name="power"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </div>
 
 <ion-menu contentId="main-content">
-  <ion-header>
-    <ion-toolbar
-      style="--background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important; color: whitesmoke;">
-      <ion-title>Shops</ion-title>
-      <ion-icon style="margin-left: 5px; margin-right: 5px;" size="large"
-        name="home" slot="start"></ion-icon>
+     <ion-toolbar style="--background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important; color: whitesmoke;">
+         <ion-icon name="arrow-back" slot="start" (click)="goBack()"></ion-icon>
+ 
+      <ion-title> <ion-icon name="home"></ion-icon>
+        Shops</ion-title>
+
     </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding">
-    <!-- Move ion-menu-toggle button  *ngIf="showPowerIcon"to the right by placing it in a slot="end" -->
+   <ion-content class="ion-padding">
+    
     <ion-menu-toggle *ngFor="let item of outlets" class="ion-hide-md-up">
-      <ion-button name="home" class="Shops"
-        (click)="link(item.Id)">{{item.Name}}</ion-button>
+      <ion-button name="home" class="Shops" (click)="link(item.Id)">{{item.Name}}</ion-button>
     </ion-menu-toggle>
-    <!-- <ion-list>
-      <ion-menu-toggle *ngFor="let item of outlets">
-        <ion-item (click)="link(item.Id)" [routerLink]="['/dashboard', item.Id]" routerLinkActive="active">
-          {{ item.Name }}
-        </ion-item>
-      </ion-menu-toggle>
-    </ion-list> -->
+
   </ion-content>
 </ion-menu>
+<!-- style="margin-left: 5px; margin-right: 5px;" size="large" -->

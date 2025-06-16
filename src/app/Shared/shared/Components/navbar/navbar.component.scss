@@ -33,3 +33,36 @@
 
 
 }
+@media screen and (max-width: 768px) {
+ .logo {
+  // padding-top: 5px;
+  width: 35px;
+  height: 30px;
+}
+.Shops {
+    width: 140px;
+    align-items: center;
+    --background: #2c5d82;
+font-size: 12px;
+  }
+  ion-title{
+    font-size: 22px;
+  }
+  ion-icon{
+    font-size: 22px;
+  }
+   .iconsize{
+    font-size: 10px;
+
+  }
+  // menu-inner {
+  //       width: 192px;
+  //   }
+  ion-menu{
+          width: 192px;
+
+  }
+}
+  
+ 
+ 
