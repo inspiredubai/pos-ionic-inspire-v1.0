@@ -12,7 +12,8 @@ import { DashboardService } from '../../Services/dashboard.service';
 })
 export class NavbarComponent implements OnInit {
   selectedOutletId: any;
-Istoggle: boolean = true;   constructor(
+Istoggle: boolean = true; 
+  constructor(
     private authService: AuthenticationService,
     private router: Router,
     private toastController: ToastController,
