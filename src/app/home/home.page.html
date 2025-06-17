@@ -2,9 +2,9 @@
 <app-navbar></app-navbar>
 <!-- <div class="page"> -->
 <ion-content>
-  <ion-row  size="12" size-sm="12" size-md="12" class="bgblue marginL">
+  <div  size="12" size-sm="12" size-md="12" class="bgblue marginL">
     <div class="today"><b> Today: {{todayTotal}} </b></div>
-  </ion-row>
+  </div>
   <br>
   <ion-grid>
     <ion-row>
@@ -31,9 +31,9 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="6">
-        <ion-title class="bgblue1 mLR">
+        <div class="bgblue1 mLR">
           <b>POS Form</b>
-        </ion-title>
+        </div>
         <div class="table-container">
           <table class="custom-table">
             <thead>
@@ -57,9 +57,9 @@
 
       </ion-col>
       <ion-col size="12" size-sm="12" size-md="6">
-        <ion-title class="bgblue1 mLR">
+        <div class="bgblue1 mLR">
           <b>Transaction</b>
-        </ion-title>
+        </div>
         <div class="table-container">
           <table class="custom-table">
             <thead>
@@ -89,9 +89,9 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="12">
-        <ion-title class="bgblue1 mLR">
+        <div class="bgblue1 mLR">
           <b>Transaction Void</b>
-        </ion-title>
+        </div>
         <div class="table-container">
           <table class="custom-table">
             <thead>
@@ -120,9 +120,9 @@
     </ion-row>
   </ion-grid>
   <ion-grid size="12" size-sm="12" size-md="12">
-    <ion-title class="bgblue1 mLR">
+    <div class="bgblue1 mLR">
       <b>Group Summary</b>
-    </ion-title>
+    </div>
     <ion-row size="12" size-sm="12" size-md="12">
       <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12" size-md="3">
         <div class="group">Item Group:{{item.GroupName}}</div>
@@ -135,12 +135,12 @@
     </ion-row>
   </ion-grid>
   <ion-grid size="12"  size-sm="12" size-md="12">
-    <ion-title class="bgblue1 mLR">
+    <div class="bgblue1 mLR">
       <b>Today Status</b>
-    </ion-title>
+    </div>
     <ion-row  size="12"  size-sm="12" size-md="12">
 
-      <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="4">
+      <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="3">
         <div class="group">Total No Customer: {{item?.Id}}</div>
         <div class="group">Last Punched: {{item?.LastBillTime}}</div>
         <div class="group">Total Bills: {{10}}</div>
