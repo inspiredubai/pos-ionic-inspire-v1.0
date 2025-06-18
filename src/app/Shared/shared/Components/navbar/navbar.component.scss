@@ -15,7 +15,11 @@
     --background: #2c5d82;
 
   }
-
+ion-toolbar{
+  --background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important;
+   color: whitesmoke; 
+   margin-bottom:5px;
+}
   .Shops:hover {
     opacity: 0.7;
   }
