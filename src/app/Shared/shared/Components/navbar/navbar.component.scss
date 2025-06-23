@@ -38,6 +38,15 @@ ion-toolbar{
 
 }
 @media screen and (max-width: 768px) {
+  ion-menu-button{
+    color: white;
+  }
+  ion-header{
+  background:linear-gradient(to bottom right, #66b2ed, #1f3b50) !important;
+   color: whitesmoke; 
+   padding: 35px;
+//margin: 10px;
+}
  .logo {
   // padding-top: 5px;
   width: 35px;
@@ -52,8 +61,12 @@ font-size: 12px;
   ion-title{
     font-size: 22px;
   }
+  ion-toolbar{
+    padding-top: 10px;
+  }
   ion-icon{
     font-size: 22px;
+    color: white;
   }
    .iconsize{
     font-size: 10px;
