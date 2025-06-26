@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../Services/authentication.service';
 import { ApiResponse } from 'src/app/Domain/api-response';
-import { ToastController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 import { DashboardService } from '../../Services/dashboard.service';
 
 @Component({
@@ -12,19 +12,21 @@ import { DashboardService } from '../../Services/dashboard.service';
 })
 export class NavbarComponent implements OnInit {
   selectedOutletId: any;
-Istoggle: boolean = true; 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private toastController: ToastController,
     private dashboardService: DashboardService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private menuController: MenuController
   ) { }
-goBack() {
-  // Uncomment the below line if navigation is needed
-  // this.router.navigate(['/outlet']);
-  this.Istoggle = !this.Istoggle;
+closeMenu() {
+  this.menuController.close();
 }
+refreshPage() {
+  location.reload();
+}
+
 
   ngOnInit() {
     this.GetOutlets()

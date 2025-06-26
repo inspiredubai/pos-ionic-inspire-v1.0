@@ -3,7 +3,7 @@
     <ion-toolbar>
    
     <ion-buttons slot="start" class="ion-hide-sm-up">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
 
     <ion-buttons class="ion-hide-md-down" slot="secondary">
@@ -23,11 +23,16 @@
       <ion-icon slot="start" name="power"></ion-icon>
       <span>Logout</span>
     </ion-button>
-    <ion-buttons class="ion-hide-sm-up" (click)="Logout()" slot="end"  class="iconsize">
+    <ion-buttons class="ion-hide-sm-up"  slot="end"  class="iconsize">
 
+   <ion-button class="iconsize" (click)="refreshPage()">
+  <ion-icon slot="icon-only" name="refresh"></ion-icon>
+</ion-button>
       <ion-button class="iconsize">
         <ion-icon slot="icon-only" name="power"></ion-icon>
       </ion-button>
+   
+
     </ion-buttons>
   </ion-toolbar>
 
@@ -36,7 +41,7 @@
 <ion-menu contentId="main-content">
   <ion-header></ion-header>
   <ion-toolbar style="--background:linear-gradient(to bottom right, #66b2ed, #1f3b50); color: whitesmoke;">
-    <ion-icon name="arrow-back" slot="start" (click)="goBack()"></ion-icon>
+    <ion-icon name="arrow-back" slot="start" (click)="closeMenu()"></ion-icon>
     <ion-title>
       <ion-icon name="home"></ion-icon>
       Shops
@@ -44,13 +49,11 @@
   </ion-toolbar>
 
   <ion-content class="ion-padding">
-    <div *ngIf="Istoggle">
       <ion-menu-toggle *ngFor="let item of outlets" class="ion-hide-md-up">
         <ion-button class="Shops" (click)="link(item.Id)">
           {{ item.Name }}
         </ion-button>
       </ion-menu-toggle>
-    </div>
   </ion-content>
 </ion-menu>
 
