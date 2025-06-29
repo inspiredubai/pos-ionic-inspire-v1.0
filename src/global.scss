@@ -43,12 +43,17 @@
     height: 100%;
   }
 
-   @media (prefers-color-scheme: dark) {
-    html, body {
-      background-color: #ffffff !important;
-      color: #000000;
-    }
+ :root {
+  --ion-background-color: #fff !important;
+  --ion-text-color: #000 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #fff !important;
+    --ion-text-color: #000 !important;
   }
+}
 ion-card-content{
   background: #ffffff;
   color: #000000;
