@@ -47,7 +47,6 @@
   --ion-background-color: #fff !important;
   --ion-text-color: #000 !important;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --ion-background-color: #fff !important;
@@ -58,6 +57,7 @@ ion-card-content{
   background: #ffffff;
   color: #000000;
 }
+
 ion-content{
   background: #ffffff;
   color: #000000;
