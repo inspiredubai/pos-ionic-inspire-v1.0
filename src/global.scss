@@ -43,10 +43,17 @@
     height: 100%;
   }
 
-  /* Force white background even in dark mode */
-  @media (prefers-color-scheme: dark) {
+   @media (prefers-color-scheme: dark) {
     html, body {
       background-color: #ffffff !important;
       color: #000000;
     }
   }
+ion-card-content{
+  background: #ffffff;
+  color: #000000;
+}
+ion-content{
+  background: #ffffff;
+  color: #000000;
+}
