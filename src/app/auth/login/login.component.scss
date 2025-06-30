@@ -9,6 +9,7 @@
     --min-height: 50px;
     --padding-top: 10px;
     --padding-bottom: 10px;
+    
   }
 
 
@@ -51,7 +52,21 @@
   width: 60%;
   margin: auto;
   margin-top: 20%;
+  background-color: #ffffff !important;
+  color-scheme: only light;
+  --ion-background-color: #ffffff !important;
+  --ion-text-color: #000000 !important;
+
 }
+ion-item {
+  --background: #ffffff !important;
+  --ion-background-color: #ffffff !important;
+  --ion-text-color: #000000 !important;
+  --color: #000000 !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
 
 @media screen and (max-width: 768px) {
    ion-card {
