@@ -47,7 +47,13 @@ html, body {
   --ion-background-color: #ffffff !important;
   --ion-text-color: #000000 !important;
 }
-
+.login-card,
+.login-container,
+.card,
+.card-body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
 @media (prefers-color-scheme: dark) {
   html, body, :root {
     background-color: #ffffff !important;
@@ -57,3 +63,12 @@ html, body {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .login-card,
+  .login-container,
+  .card,
+  .card-body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+}
