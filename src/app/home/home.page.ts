@@ -134,7 +134,7 @@ export class HomePage {
   CalculateTodayTotal(data: any[]) {
     this.todayTotal = 0;
     data.forEach((x) => {
-      this.todayTotal += x.SalesAmount;
+this.todayTotal += Math.round(x.SalesAmount);
     })
   }
 
@@ -174,5 +174,8 @@ export class HomePage {
     this.router.navigateByUrl(path);
   }
 
+round(value: number): number {
+  return Math.round(value);
+}
 
 }

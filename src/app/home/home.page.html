@@ -31,10 +31,33 @@
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
-          <b>POS Form</b>
+          <b>POS Form</b> 
         </div>
         <div class="table-container">
-          <table class="custom-table">
+          <table class="custom-table" *ngIf="detail && detail.length > 0; else noData">
+  <thead>
+    <tr>
+      <th>Cash Amt</th>
+      <th>Credit Amt</th>
+      <th>Sale Amt</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of detail">
+      <td style="color: black;">{{ item?.CashAmount }}</td>
+      <td style="color: black;">{{ item?.CreditCardAmount }}</td>
+     <td style="color: black;">{{ round(item?.SalesAmount) }}</td>
+      <td style="color: black;">{{ item?.SummaryDateString}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p>No data available</p>
+</ng-template>
+
+          <!-- <table class="custom-table">
             <thead>
               <tr>
                 <th>Cash Amt </th>
@@ -43,15 +66,16 @@
                 <th> Date </th>
               </tr>
             </thead>
-            <tbody>
-              <tr *ngFor="let item of detail">
-                <td>{{ item.CashAmount }}</td>
-                <td>{{ item.CreditCardAmount }}</td>
-                <td>{{ item.SalesAmount }}</td>
-                <td>{{ item.SummaryDateString }}</td>
-              </tr>
-            </tbody>
-          </table>
+           <tbody>
+  <tr *ngFor="let item of detail">
+    <td>{{ item?.CashAmount }}</td>
+    <td>{{ item?.CreditCardAmount }}</td>
+    <td>{{ item?.SalesAmount }}</td>
+    <td>{{ item?.SummaryDateString }}</td>
+  </tr>
+</tbody>
+
+          </table> -->
         </div>
 
       </ion-col>
@@ -72,11 +96,11 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of traction">
-                <td>{{ item?.Id }}</td>
-                <td>{{ item?.CreatedDateString }}</td>
-                <td>{{ item?.Amount }}</td>
-                <td>{{ item?.Cash }}</td>
-                <td>{{ item?.BillNo }}</td>
+                <td style="color: black;">{{ item?.Id }}</td>
+                <td style="color: black;">{{ item?.CreatedDateString }}</td>
+                <td style="color: black;">{{ item?.Amount }}</td>
+                <td style="color: black;">{{ item?.Cash }}</td>
+                <td style="color: black;">{{ item?.BillNo }}</td>
 
               </tr>
             </tbody>
@@ -120,14 +144,14 @@
   </ion-grid>
   <ion-grid size="12" size-sm="12" size-md="12">
     <div class="bgblue1 mLR">
-      <b>Group Summary</b>
+      <b>Category Summary</b>
     </div>
     <ion-row size="12" size-sm="12" size-md="12">
       <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12" size-md="3">
-        <div class="group">Item Group:{{item.GroupName}}</div>
-        <div class="group">Item Name:</div>
+        <div class="group">Category:{{item.GroupName}}</div>
+        <!-- <div class="group">Item Name:</div> -->
         <div class="group">Amount: {{item.Amount}}</div>
-        <div class="abc">QTY %:4</div>
+        <!-- <div class="abc">QTY %:4</div> -->
         <br>
         <div class="abc">Amount %: {{item.Percentage}}</div>
       </ion-col>
@@ -140,12 +164,12 @@
     <ion-row  size="12"  size-sm="12" size-md="12">
 
       <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="3">
-        <div class="group">Total No Customer: {{item?.Id}}</div>
-        <div class="group">Last Punched: {{item?.LastBillTime}}</div>
-        <div class="group">Total Bills: {{10}}</div>
-        <div class="abc">Total Bill Amount %: {{item?.LastBillAmount}}</div>
+        <div class="group">Total No Customer: {{item?.NoOfCustomers}}</div>
+        <div class="group">Last Punched: {{item?.LastBillTimeString}}</div>
+        <div class="group">Total Bills: {{item.TotalBills}}</div>
+        <div class="abc">Last Bill Amount: {{item?.LastBillAmount}}</div>
         <br>
-        <div class="abc">Amount %: 9</div>
+        <!-- <div class="abc">Amount %: 9</div> -->
       </ion-col>
     </ion-row>
   </ion-grid>
