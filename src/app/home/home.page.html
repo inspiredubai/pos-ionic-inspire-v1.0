@@ -15,21 +15,7 @@
           <canvas id="pieChart"></canvas>
         </div>
       </ion-col>
-      <ion-col size="12" size-sm="12" size-md="6">
-        <div class="bgblue1 mLR">
-          <b>Sales</b>
-              </div>
-        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
-          <canvas id="lineChart"></canvas>
-        </div>
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-sm="12" size-md="6">
+          <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
           <b>POS Form</b> 
         </div>
@@ -79,6 +65,20 @@
         </div>
 
       </ion-col>
+      <!-- <ion-col size="12" size-sm="12" size-md="6">
+        <div class="bgblue1 mLR">
+          <b>Sales</b>
+              </div>
+        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
+          <canvas id="lineChart"></canvas>
+        </div>
+      </ion-col> -->
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
       <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
           <b>Transaction</b>
@@ -106,6 +106,34 @@
             </tbody>
           </table>
         </div>
+      </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6">
+        <div class="bgblue1 mLR">
+          <b>Orders</b>
+        </div>
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Oredr No</th>
+                <th> Table </th>
+                <th>Waiter </th>
+                <th> Amount </th>
+ 
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+   
+
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -142,21 +170,19 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid size="12" size-sm="12" size-md="12">
+  <!-- <ion-grid size="12" size-sm="12" size-md="12">
     <div class="bgblue1 mLR">
       <b>Category Summary</b>
     </div>
     <ion-row size="12" size-sm="12" size-md="12">
       <ion-col size="12" *ngFor="let item of itemSummary" size-sm="12" size-md="3">
         <div class="group">Category:{{item.GroupName}}</div>
-        <!-- <div class="group">Item Name:</div> -->
-        <div class="group">Amount: {{item.Amount}}</div>
-        <!-- <div class="abc">QTY %:4</div> -->
-        <br>
+         <div class="group">Amount: {{item.Amount}}</div>
+         <br>
         <div class="abc">Amount %: {{item.Percentage}}</div>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
   <ion-grid size="12"  size-sm="12" size-md="12">
     <div class="bgblue1 mLR">
       <b>Today Status</b>
