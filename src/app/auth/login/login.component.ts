@@ -39,18 +39,48 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       Email: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required]),
-      Role: new FormControl('SuperAdmin', [Validators.required])
+      Role: new FormControl('SuperAdmin', [Validators.required]),
+      RememberMe: new FormControl(false)
     });
     this.ReturnUrl = this.route.snapshot.queryParams['returnUrl'] || 'dashboard';
+
+     // 👇 Load remembered credentials (if available)
+  const savedEmail = localStorage.getItem('rememberedEmail');
+  const savedPassword = localStorage.getItem('rememberedPassword');
+
+  if (savedEmail && savedPassword) {
+    this.loginForm.patchValue({
+      Email: savedEmail,
+      Password: savedPassword,
+      RememberMe: true
+    });
+  }
   }
 
   Login() {
     this.loginForm.markAllAsTouched()
     if (this.loginForm.invalid) return;
+      const { Email, Password, RememberMe } = this.loginForm.value;
+
+  // Handle Remember Me
+  if (RememberMe) {
+    localStorage.setItem('rememberedEmail', Email);
+    localStorage.setItem('rememberedPassword', Password); // Not secure, optional
+  } else {
+    localStorage.removeItem('rememberedEmail');
+    localStorage.removeItem('rememberedPassword');
+  }
     this.authService.Login(this.loginForm.value).subscribe((response: ApiResponse) => {
       if (response.IsSuccess) {
         this.utility.SetLoginData(response?.ReturnObject);
         this.presentSuccessToast('Login Successfully');
+         if (!RememberMe) {
+        this.loginForm.patchValue({
+          Email: '',
+          Password: '',
+          RememberMe: false
+        });
+      }
         this.dashboardService.GetOutlets().subscribe((response: ApiResponse) => {
          
             this.outlets = response.ReturnObject;
