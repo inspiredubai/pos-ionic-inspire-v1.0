@@ -23,18 +23,21 @@
           <table class="custom-table" *ngIf="detail && detail.length > 0; else noData">
   <thead>
     <tr>
-      <th>Cash Amt</th>
-      <th>Credit Amt</th>
-      <th>Sale Amt</th>
       <th>Date</th>
+      <th style="text-align: center;">Sales Amount</th>
+      <th style="text-align: center;">Cash Amount</th>
+      <th style="text-align: center;">CC Amount</th>
+      <th style="text-align: center;">Total Revenue</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of detail">
-      <td style="color: black;">{{ item?.CashAmount }}</td>
-      <td style="color: black;">{{ item?.CreditCardAmount }}</td>
-     <td style="color: black;">{{ round(item?.SalesAmount) }}</td>
-      <td style="color: black;">{{ item?.SummaryDateString}}</td>
+      <td style="color: black;">{{ item?.SummaryDateString | date:'dd-MMM-yyyy'}}</td>
+      <td style="color: black; text-align: center;">{{ round(item?.SalesAmount) }}</td>
+      <td style="color: black;text-align: center;">{{ item?.CashAmount }}</td>
+      <td style="color: black;text-align: center;">{{ item?.CreditCardAmount }}</td>
+     <td style="color: black;text-align: center;">{{ item?.CreditCardAmount+item.CashAmount }}</td>
+
     </tr>
   </tbody>
 </table>
@@ -81,27 +84,26 @@
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
-          <b>Transaction</b>
+          <b>Transactions</b>
         </div>
         <div class="table-container">
           <table class="custom-table">
             <thead>
               <tr>
-                <th>Inv</th>
+                <th>Invoice No</th>
                 <th> Time</th>
-                <th> Amount</th>
-                <th>Cash</th>
-                <th>Card</th>
+                <th style="text-align: center;"> Amount</th>
+                <th style="text-align: center;">Cash</th>
+                <th style="text-align: center;">Card</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of traction">
-                <td style="color: black;">{{ item?.Id }}</td>
-                <td style="color: black;">{{ item?.CreatedDateString }}</td>
-                <td style="color: black;">{{ item?.Amount }}</td>
-                <td style="color: black;">{{ item?.Cash }}</td>
                 <td style="color: black;">{{ item?.BillNo }}</td>
-
+                <td style="color: black;">{{ item?.CreatedDateString| date:'HH:mm' }}</td>
+                <td style="color: black; text-align: center;">{{ item?.Amount }}</td>
+                <td style="color: black; text-align: center;">{{ item?.Cash }}</td>
+                <td style="color: black; text-align: center;">{{ item?.Credit }}</td>
               </tr>
             </tbody>
           </table>
@@ -118,16 +120,16 @@
                 <th>Order No</th>
                 <th> Table </th>
                 <th>Waiter </th>
-                <th> Amount </th>
+                <th style="text-align: center;"> Amount </th>
  
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+              <tr *ngFor="let item of PandingOrders" >
+                <td style="color: black;">{{item?.OrderNo}} </td>
+                <td style="color: black;">{{item?.Table}} </td>
+                <td style="color: black;">{{item?.WAITER}} </td>
+                <td style="color: black; text-align: center;">{{item.Amount}} </td>
               </tr>
             </tbody>
           </table>
@@ -137,7 +139,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid>
+  <!-- <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="12">
         <div class="bgblue1 mLR">
@@ -147,20 +149,21 @@
           <table class="custom-table">
             <thead>
               <tr>
-                <th>Oredr No</th>
-                <th> Item Name </th>
-                <th>Qty </th>
-                <th> User </th>
-                <th> Time </th>
+                <th >Oredr No</th>
+                <th > Item Name </th>
+                <th >Qty </th>
+                <th > User </th>
+                <th > Time </th>
 
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+              <tr *ngFor="let item of VoidTransection">
+                <td style="color: black;">{{item?.OrderID}} </td>
+                <td style="color: black;">{{item?.ItemName}} </td>
+                <td style="color: black;">{{item?.Quantity}} </td>
+                <td style="color: black;">{{item?.UserName}} </td>
+                <td style="color: black;">{{item?.DateAndTime}} </td>
               </tr>
             </tbody>
           </table>
@@ -169,7 +172,7 @@
 
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 
 
 
@@ -183,19 +186,20 @@
           <table class="custom-table">
             <thead>
               <tr>
-                <th>Cash Amt</th>
-                <th>Credit Amt</th>
-                <th>Sale Amt</th>
                 <th>Date</th>
-
+                <th style="text-align: center;">Sales Amount</th>
+                <th style="text-align: center;">Cash Amount</th>
+                <th style="text-align: center;">Credit Card Amount</th>
+                <th style="text-align: center;">Total Revenue</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+            <tbody>  
+              <tr *ngFor="let item of PreviousData" >
+                <td style="color: black;">{{item.OrderDate  | date:'dd-MMM-yyyy'}} </td>
+                <td style="color: black; text-align: center;">{{item.SalesAmount}} </td>
+                <td style="color: black; text-align: center;">{{item.CashAmount}} </td>
+                <td style="color: black; text-align: center;"> {{item.CreditCardAmount}}</td>
+                <td style="color: black;text-align: center;">{{ item?.CreditCardAmount+item.CashAmount }}</td>
               </tr>
             </tbody>
           </table>
@@ -228,9 +232,9 @@
 
       <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="3">
         <div class="group">Total No Customer: {{item?.NoOfCustomers}}</div>
-        <div class="group">Last Punched: {{item?.LastBillTimeString}}</div>
+        <div class="group">Last Punched: {{item?.LastBillTime | date:'HH:mm'}}</div>
         <div class="group">Total Bills: {{item.TotalBills}}</div>
-        <div class="abc">Last Bill Amount: {{item?.LastBillAmount}}</div>
+        <div class="group">Last Bill Amount: {{item?.LastBillAmount}}</div>
         <br>
         <!-- <div class="abc">Amount %: 9</div> -->
       </ion-col>

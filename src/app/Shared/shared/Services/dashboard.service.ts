@@ -34,4 +34,13 @@ export class DashboardService {
   GetOutlets() {
     return this.http.get<ApiResponse>("Dashboard/GetOutlets")
   }
+   GetPreviousDaysSale(outletId: number) {
+    return this.http.get<ApiResponse>("Dashboard/GetPreviousStatus?outletId=" + outletId)
+  }
+    GetVoidTransection(outletId: number) {
+    return this.http.get<ApiResponse>("Dashboard/GetVoidTransactions?outletId=" + outletId)
+  }
+     GetPendingOrders(outletId: number) {
+    return this.http.get<ApiResponse>("Dashboard/GetPendingOrders?outletId=" + outletId)
+  }
 }

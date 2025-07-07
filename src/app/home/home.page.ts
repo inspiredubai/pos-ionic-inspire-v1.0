@@ -23,6 +23,9 @@ export class HomePage {
   todayStatus: any[] = [];
   todayTotal: number = 0;
   traction: any[] = [];
+  PreviousData: any;
+  VoidTransection: any;
+  PandingOrders: any;
   constructor(private dashboardService: DashboardService, private route: ActivatedRoute,
     private router: Router) { }
 
@@ -38,11 +41,14 @@ export class HomePage {
         if (id) {
           this.createChartPie("pie", "pieChart", id);
 
-          this.createChartLine("line", "lineChart", id);
+         // this.createChartLine("line", "lineChart", id);
           this.GetGroupSummary(id);
           this.GetTodayStatus(id);
           this.GetTraction(id);
           this.GetDailySummaryByDate(id);
+          this.GetPreviousDaysSale(id); 
+         // this.GetVoidTransection(id);
+          this.GetPendingOrders(id);
         }
       }
       );
@@ -161,6 +167,27 @@ this.todayTotal += Math.round(x.SalesAmount);
       if (response.IsSuccess) {
         this.todayStatus = response.ReturnObject;
         console.log('status', this.todayStatus)
+      }
+    })
+  }
+    GetPreviousDaysSale(outletId: number) {
+    this.dashboardService.GetPreviousDaysSale(outletId).subscribe((response: ApiResponse) => {
+      if (response.IsSuccess) {
+        this.PreviousData = response.ReturnObject;
+      }
+    })
+  }
+     GetVoidTransection(outletId: number) {
+    this.dashboardService.GetVoidTransection(outletId).subscribe((response: ApiResponse) => {
+      if (response.IsSuccess) {
+        this.VoidTransection = response.ReturnObject;
+      }
+    })
+  }
+    GetPendingOrders(outletId: number) {
+    this.dashboardService.GetPendingOrders(outletId).subscribe((response: ApiResponse) => {
+      if (response.IsSuccess) {
+        this.PandingOrders = response.ReturnObject;
       }
     })
   }
