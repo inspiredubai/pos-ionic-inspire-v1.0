@@ -4,8 +4,8 @@
   <!-- <div class="bgblue marginL today" *ngFor="let item of detail">
     <span style="float: right;">{{item?.SummaryDate | date:'dd-MMM-yyyy'}} </span>
 
-    <span> Gross : {{'999'}} </span><br>
-    <span> Runn. : {{'77'}} </span><br>
+    <span> Gross : {{todayTotal-runningBills}} </span><br>
+    <span> Runn. : {{runningBills?runningBills:0}} </span><br>
     <span style="padding-right: 10px;"> Net   : {{todayTotal}} </span>
 
   </div> -->
