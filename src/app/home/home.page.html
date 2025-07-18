@@ -1,53 +1,61 @@
- <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 <!-- <div class="page"> -->
 <ion-content>
-  <div class="bgblue marginL today"  *ngFor="let item of detail">
-   <b> Gross Sales: {{'999'}} </b>
-      <b> Running Bills: {{'77'}} </b>
-      <b> Net Sales: {{todayTotal}} </b>
+  <!-- <div class="bgblue marginL today" *ngFor="let item of detail">
+    <span style="float: right;">{{item?.SummaryDate | date:'dd-MMM-yyyy'}} </span>
 
-    <b style="float: right;">{{item?.SummaryDate  | date:'dd-MMM-yyyy'}} </b>
-  </div>
+    <span> Gross : {{'999'}} </span><br>
+    <span> Runn. : {{'77'}} </span><br>
+    <span style="padding-right: 10px;"> Net   : {{todayTotal}} </span>
+
+  </div> -->
+ <div class="bgblue marginL today" *ngFor="let item of detail" style="position: relative; padding: 1rem;">
+   <span style="position: absolute; right: 10px; top: 15px;">
+    {{ item?.SummaryDate | date: 'dd-MMM-yyyy' }}
+  </span>
+
+   <pre style="margin: 0; font-family: monospace; columns: white;">
+Gross :  {{ 999 }}
+Runn. :   {{ 77 }}
+Net   :  {{ todayTotal }}
+  </pre>
+</div>
+
+
+
   <br>
   <ion-grid>
     <ion-row>
+  
       <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
-          <b>Group Summary</b>
-        </div>
-        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
-          <canvas id="pieChart"></canvas>
-        </div>
-      </ion-col>
-          <ion-col size="12" size-sm="12" size-md="6">
-        <div class="bgblue1 mLR">
-          <b>POS Form</b> 
+          <b>POS Form</b>
         </div>
         <div class="table-container">
           <table class="custom-table" *ngIf="detail && detail.length > 0; else noData">
-  <thead>
-    <tr>
-      <!-- <th>Date</th> -->
-      <th style="text-align: center;">Sales Amount</th>
-      <th style="text-align: center;">Cash Amount</th>
-      <th style="text-align: center;">CC Amount</th>
-      <th style="text-align: center;">Total Revenue</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of detail">
-      <td style="color: black; text-align: center;">{{ round(item?.SalesAmount) }}</td>
-      <td style="color: black;text-align: center;">{{ item?.CashAmount }}</td>
-      <td style="color: black;text-align: center;">{{ item?.CreditCardAmount }}</td>
-     <td style="color: black;text-align: center;">{{ item?.CreditCardAmount+item.CashAmount }}</td>
+            <thead>
+              <tr>
+                <!-- <th>Date</th> -->
+                <th style="text-align: center;">Sales Amount</th>
+                <th style="text-align: center;">Cash Amount</th>
+                <th style="text-align: center;">CC Amount</th>
+                <th style="text-align: center;">Total Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of detail">
+                <td style="color: black; text-align: center;">{{ round(item?.SalesAmount) }}</td>
+                <td style="color: black;text-align: center;">{{ item?.CashAmount }}</td>
+                <td style="color: black;text-align: center;">{{ item?.CreditCardAmount }}</td>
+                <td style="color: black;text-align: center;">{{ item?.CreditCardAmount+item.CashAmount }}</td>
 
-    </tr>
-  </tbody>
-</table>
+              </tr>
+            </tbody>
+          </table>
 
-<ng-template #noData>
-  <p>No data available</p>
-</ng-template>
+          <ng-template #noData>
+            <p>No data available</p>
+          </ng-template>
 
           <!-- <table class="custom-table">
             <thead>
@@ -71,6 +79,36 @@
         </div>
 
       </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6">
+        <div class="bgblue1 mLR">
+          <b>Previous Days Sales</b>
+        </div>
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th style="text-align: center;">Sales Amount</th>
+                <th style="text-align: center;">Cash Amount</th>
+                <th style="text-align: center;">Credit Card Amount</th>
+                <th style="text-align: center;">Total Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of PreviousData">
+                <td style="color: black;">{{item?.OrderDate | date:'dd-MMM-yyyy'}} </td>
+                <td style="color: black; text-align: center;">{{item?.SalesAmount}} </td>
+                <td style="color: black; text-align: center;">{{item?.CashAmount}} </td>
+                <td style="color: black; text-align: center;"> {{item?.CreditCardAmount}}</td>
+                <td style="color: black; text-align: center;">{{ (item?.CreditCardAmount || 0) + (item?.CashAmount || 0)
+                  | number: '1.2-2' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </ion-col>
       <!-- <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
           <b>Sales</b>
@@ -87,7 +125,7 @@
     <ion-row>
       <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
-          <b>Transactions</b>
+          <b>Sattled Bills</b>
         </div>
         <div class="table-container">
           <table class="custom-table">
@@ -113,9 +151,9 @@
           </table>
         </div>
       </ion-col>
-            <ion-col size="12" size-sm="12" size-md="6">
+      <ion-col size="12" size-sm="12" size-md="6">
         <div class="bgblue1 mLR">
-          <b>  Pending Orders</b>
+          <b> Running Bills</b>
         </div>
         <div class="table-container">
           <table class="custom-table">
@@ -125,11 +163,11 @@
                 <th> Table </th>
                 <th>Waiter </th>
                 <th style="text-align: center;"> Amount </th>
- 
+
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let item of PandingOrders" >
+              <tr *ngFor="let item of PandingOrders">
                 <td style="color: black;">{{item?.OrderNo}} </td>
                 <td style="color: black;">{{item?.Table}} </td>
                 <td style="color: black;">{{item?.WAITER}} </td>
@@ -138,7 +176,7 @@
             </tbody>
           </table>
         </div>
-   
+
 
       </ion-col>
     </ion-row>
@@ -182,33 +220,14 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="12" size-sm="12" size-md="12">
-        <div class="bgblue1 mLR">
-          <b>Previous Days Sales</b>
-        </div>
-        <div class="table-container">
-          <table class="custom-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th style="text-align: center;">Sales Amount</th>
-                <th style="text-align: center;">Cash Amount</th>
-                <th style="text-align: center;">Credit Card Amount</th>
-                <th style="text-align: center;">Total Revenue</th>
-              </tr>
-            </thead>
-            <tbody>  
-              <tr *ngFor="let item of PreviousData" >
-                <td style="color: black;">{{item?.OrderDate  | date:'dd-MMM-yyyy'}} </td>
-                <td style="color: black; text-align: center;">{{item?.SalesAmount}} </td>
-                <td style="color: black; text-align: center;">{{item?.CashAmount}} </td>
-                <td style="color: black; text-align: center;"> {{item?.CreditCardAmount}}</td>
-                <td style="color: black; text-align: center;">{{ (item?.CreditCardAmount || 0) + (item?.CashAmount || 0) | number: '1.2-2' }}</td>              </tr>
-            </tbody>
-          </table>
-        </div>
-   
 
+          <ion-col size="12" size-sm="12" size-md="6">
+        <div class="bgblue1 mLR">
+          <b>Group Summary</b>
+        </div>
+        <div style="height: 60vh !important;display: flex; justify-content: center; align-items: center;">
+          <canvas id="pieChart"></canvas>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -227,11 +246,11 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
-  <ion-grid size="12"  size-sm="12" size-md="12">
+  <ion-grid size="12" size-sm="12" size-md="12">
     <div class="bgblue1 mLR">
       <b>Today Status</b>
     </div>
-    <ion-row  size="12"  size-sm="12" size-md="12">
+    <ion-row size="12" size-sm="12" size-md="12">
 
       <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="3">
         <div class="group" *ngIf="item?.NoOfCustomers">Total No Customer: {{item?.NoOfCustomers}}</div>
