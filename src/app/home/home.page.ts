@@ -26,6 +26,7 @@ export class HomePage {
   PreviousData: any;
   VoidTransection: any;
   PandingOrders: any;
+  runningBills: any;
   constructor(private dashboardService: DashboardService, private route: ActivatedRoute,
     private router: Router) { }
 
@@ -188,9 +189,15 @@ this.todayTotal += Math.round(x.SalesAmount);
     this.dashboardService.GetPendingOrders(outletId).subscribe((response: ApiResponse) => {
       if (response.IsSuccess) {
         this.PandingOrders = response.ReturnObject;
+        this.getRunningBills()
       }
     })
   }
+getRunningBills() {
+  this.runningBills = this.PandingOrders.reduce((total: any, res: { Amount: any; }) => total + res.Amount, 0);
+  console.log("running balance",this.runningBills)
+}
+
 
   RoutePage(pathName: string) {
     this.router.navigate([pathName])

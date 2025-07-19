@@ -2,8 +2,8 @@
 <!-- <div class="page"> -->
 <ion-content>
   <div class="bgblue marginL today"  *ngFor="let item of detail">
-   <b> Gross Sales: {{'999'}} </b>
-      <b> Running Bills: {{'77'}} </b>
+   <b> Gross Sales: {{todayTotal-runningBills}} </b>
+      <b> Running Bills: {{runningBills?runningBills:0}} </b>
       <b> Net Sales: {{todayTotal}} </b>
 
     <b style="float: right;">{{item?.SummaryDate  | date:'dd-MMM-yyyy'}} </b>
