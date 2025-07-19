@@ -1,8 +1,12 @@
  <app-navbar></app-navbar>
 <!-- <div class="page"> -->
 <ion-content>
-  <div class="bgblue marginL today">
-   <b> Today: {{todayTotal}} </b>
+  <div class="bgblue marginL today"  *ngFor="let item of detail">
+   <b> Gross Sales: {{'999'}} </b>
+      <b> Running Bills: {{'77'}} </b>
+      <b> Net Sales: {{todayTotal}} </b>
+
+    <b style="float: right;">{{item?.SummaryDate  | date:'dd-MMM-yyyy'}} </b>
   </div>
   <br>
   <ion-grid>
@@ -23,7 +27,7 @@
           <table class="custom-table" *ngIf="detail && detail.length > 0; else noData">
   <thead>
     <tr>
-      <th>Date</th>
+      <!-- <th>Date</th> -->
       <th style="text-align: center;">Sales Amount</th>
       <th style="text-align: center;">Cash Amount</th>
       <th style="text-align: center;">CC Amount</th>
@@ -32,7 +36,6 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of detail">
-      <td style="color: black;">{{ item?.SummaryDateString | date:'dd-MMM-yyyy'}}</td>
       <td style="color: black; text-align: center;">{{ round(item?.SalesAmount) }}</td>
       <td style="color: black;text-align: center;">{{ item?.CashAmount }}</td>
       <td style="color: black;text-align: center;">{{ item?.CreditCardAmount }}</td>
@@ -200,8 +203,7 @@
                 <td style="color: black; text-align: center;">{{item?.SalesAmount}} </td>
                 <td style="color: black; text-align: center;">{{item?.CashAmount}} </td>
                 <td style="color: black; text-align: center;"> {{item?.CreditCardAmount}}</td>
-                <td style="color: black;text-align: center;">{{ item?.CreditCardAmount+item.CashAmount }}</td>
-              </tr>
+                <td style="color: black; text-align: center;">{{ (item?.CreditCardAmount || 0) + (item?.CashAmount || 0) | number: '1.2-2' }}</td>              </tr>
             </tbody>
           </table>
         </div>
@@ -232,7 +234,7 @@
     <ion-row  size="12"  size-sm="12" size-md="12">
 
       <ion-col *ngFor="let item of todayStatus" size="12" size-sm="12" size-md="3">
-        <div class="group">Total No Customer: {{item?.NoOfCustomers}}</div>
+        <div class="group" *ngIf="item?.NoOfCustomers">Total No Customer: {{item?.NoOfCustomers}}</div>
         <div class="group">Last Punched: {{item?.LastBillTime | date:'HH:mm'}}</div>
         <div class="group">Total Bills: {{item?.TotalBills}}</div>
         <div class="group">Last Bill Amount: {{item?.LastBillAmount}}</div>

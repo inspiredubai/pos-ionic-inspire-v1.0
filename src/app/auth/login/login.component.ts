@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     let token = this.utility.GetAuthToken();
     let role = this.utility.GetUserRole();
-    // if (token && role) {
-    //   this.router.navigate(['dashboard'])
-    // }
+    if (token && role) {
+      this.router.navigate(['dashboard'])
+    }
     this.loginForm = new FormGroup({
       Email: new FormControl('', [Validators.required, Validators.email]),
       Password: new FormControl('', [Validators.required]),
